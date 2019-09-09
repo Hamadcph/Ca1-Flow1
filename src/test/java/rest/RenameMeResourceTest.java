@@ -1,6 +1,6 @@
 package rest;
 
-import entities.RenameMe;
+import entities.Joke;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -71,8 +71,8 @@ public class RenameMeResourceTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new RenameMe("Some txt","More text"));
-            em.persist(new RenameMe("aaa","bbb"));
+            em.persist(new Joke("Some txt","More text"));
+            em.persist(new Joke("aaa","bbb"));
            
             em.getTransaction().commit();
         } finally {
