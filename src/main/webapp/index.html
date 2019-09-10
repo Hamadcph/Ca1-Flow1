@@ -3,8 +3,60 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
-        <h1>Change or remove this page</h1>
+        <h1>Group 2</h1>
+        <h2>Class B</h2>
+        <br>
+        <p>Members (Loaded from Rest API)</p>
+
+        <table style="width:100%">
+            <tr>
+                <th>Name</th>
+                <th>Student Id</th> 
+                <th>Color</th>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td>a</td>
+                <td id="color1">a</td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td>a</td>
+                <td id="color2">a</td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td>a</td>
+                <td id="color3">a</td>
+            </tr>
+            <br>
+        </table>
+         <button onclick="clickColoring()">Change color</button>
+         
+                 <script>
+            function ColorFunction() {
+                let div = Array.from(document.body.getElementsByTagName('td'));
+                div.forEach(element => {
+                    element.style.backgroundColor = "blue";
+                });
+            }
+            ColorFunction();
+            
+            function clickColoring() {
+                document.getElementById("color1").style.backgroundColor = "green";
+                document.getElementById("color2").style.backgroundColor  = "yellow";
+                document.getElementById("color3").style.backgroundColor  = "red";
+                
+            }
+        </script>
+
+
     </body>
 </html>
