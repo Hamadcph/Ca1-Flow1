@@ -44,7 +44,8 @@ public class JokeFacade {
     }
 
     Joke getJokeById(int id) {
-        return null;
+     
+        return getEntityManager().find(Joke.class, id);
 
     }
 
