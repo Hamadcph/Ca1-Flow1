@@ -8,13 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "RenameMe.deleteAllRows", query = "DELETE from RenameMe")
+@NamedQuery(name = "Joke.deleteAllRows", query = "DELETE from Joke")
 public class Joke implements Serializable {
+
+    public Joke(long id, String jokeContent, String jokeType) {
+        this.id = id;
+        this.jokeContent = jokeContent;
+        this.jokeType = jokeType;
+    }
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String jokeContent;
     private String jokeType;
 

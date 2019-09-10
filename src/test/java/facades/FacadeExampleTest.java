@@ -59,9 +59,9 @@ public class FacadeExampleTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new Joke("Some txt", "More text"));
-            em.persist(new Joke("aaa", "bbb"));
+            em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
+            em.persist(new Joke(1,"Some txt", "More text"));
+            em.persist(new Joke(2,"aaa", "bbb"));
 
             em.getTransaction().commit();
         } finally {
