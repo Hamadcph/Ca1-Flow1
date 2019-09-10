@@ -14,13 +14,13 @@ public class JokeFacade {
 
     private static JokeFacade instance;
     private static EntityManagerFactory emf;
-    
+
     //Private Constructor to ensure Singleton
-    private JokeFacade() {}
-    
-    
+    private JokeFacade() {
+    }
+
     /**
-     * 
+     *
      * @param _emf
      * @return an instance of this facade class.
      */
@@ -32,20 +32,36 @@ public class JokeFacade {
         return instance;
     }
 
+    List<Joke> getAllJokes() {
+
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("SELECT r?? FROM Joke r")
+            .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    Joke getJokeById(int id) {
+        return null;
+
+    }
+
     private EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
+
     //TODO Remove/Change this before use
-    public long getRenameMeCount(){
+    public long getRenameMeCount() {
         EntityManager em = emf.createEntityManager();
-        try{
-            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM Joke r").getSingleResult();
+        try {
+            long renameMeCount = (long) em.createQuery("SELECT COUNT(r) FROM Joke r").getSingleResult();
             return renameMeCount;
-        }finally{  
+        } finally {
             em.close();
         }
-        
+
     }
 
 }
