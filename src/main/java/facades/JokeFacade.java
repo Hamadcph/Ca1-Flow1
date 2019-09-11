@@ -35,7 +35,7 @@ public class JokeFacade {
         return instance;
     }
 
-    List<Joke> getAllJokes() {
+   public List<Joke> getAllJokes() {
 
         EntityManager em = getEntityManager();
         try {
@@ -46,7 +46,7 @@ public class JokeFacade {
         }
     }
 
-    Joke getJokeById(int id) {
+   public Joke getJokeById(int id) {
      
         return getEntityManager().find(Joke.class, id);
 
