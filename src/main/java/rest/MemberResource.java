@@ -2,7 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import entities.Member;
+import entities.GroupMember;
 import utils.EMF_Creator;
 import facades.MemberFacade;
 import javax.persistence.EntityManagerFactory;
@@ -35,14 +35,10 @@ public class MemberResource {
     }
     
     
-    @Path("all")
+@Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getMemberCount() {
-        long count = FACADE.getMemberCount();
-        //System.out.println("--------------->"+count);
-        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
+    public String getAllMembers() {
+        return GSON.toJson(FACADE.getAllMembers());
     }
-
- 
 }

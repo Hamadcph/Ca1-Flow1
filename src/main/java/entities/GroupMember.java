@@ -11,20 +11,20 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name = "Member.deleteAllRows", query = "DELETE from Member"),
-@NamedQuery(name = "Member.getAll", query = "SELECT m FROM Member m"),
-@NamedQuery(name = "Member.getByName", query = "SELECT m FROM Member m WHERE m.name LIKE :name")
+@NamedQuery(name = "GroupMember.deleteAllRows", query = "DELETE from GroupMember"),
+@NamedQuery(name = "GroupMember.getAll", query = "SELECT m FROM GroupMember m"),
+@NamedQuery(name = "GroupMember.getByName", query = "SELECT m FROM GroupMember m WHERE m.name LIKE :name")
 })
 
 
-public class Member implements Serializable {
+public class GroupMember implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    public Member() {
+    public GroupMember() {
     }
         
     public Long getId() {
@@ -41,7 +41,7 @@ public class Member implements Serializable {
     private int StudentId;
     private String color;
 
-    public Member(String name, int StudentId, String color) {
+    public GroupMember(String name, int StudentId, String color) {
         this.name = name;
         this.StudentId = StudentId;
         this.color = color;

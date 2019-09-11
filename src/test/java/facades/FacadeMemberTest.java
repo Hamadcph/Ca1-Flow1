@@ -26,7 +26,7 @@
 //    public FacadeMemberTest() {
 //    }
 //
-//    //@BeforeAll
+//    @BeforeAll
 //    public static void setUpClass() {
 //        emf = EMF_Creator.createEntityManagerFactory(
 //                "pu",
@@ -54,14 +54,14 @@
 ////        Clean up database after test is done or use a persistence unit with drop-and-create to start up clean on every test
 //    }
 //
-//    // Setup the DataBase in a known state BEFORE EACH TEST
-//    //TODO -- Make sure to change the script below to use YOUR OWN entity class
+////     Setup the DataBase in a known state BEFORE EACH TEST
+////    TODO -- Make sure to change the script below to use YOUR OWN entity class
 //    @BeforeEach
 //    public void setUp() {
 //        EntityManager em = emf.createEntityManager();
 //        try {
 //            em.getTransaction().begin();
-//            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+//            //em.createNamedQuery("Member.deleteAllRows").executeUpdate();
 //            em.persist(member1);
 //            em.persist(member2);
 //            em.getTransaction().commit();
@@ -72,13 +72,13 @@
 //
 //    @AfterEach
 //    public void tearDown() {
-////        Remove any data after each test was run
+//        //Remove any data after each test was run
 //    }
 //
-//    // TODO: Delete or change this method 
-////    @Test
-////    public void testAFacadeMethod() {
-////        assertEquals(2, facade.getMemberCount(), "Expects two rows in the database");
-////    }
+//     //TODO: Delete or change this method 
+//    @Test
+//    public void testAFacadeMethod() {
+//        assertEquals(2, facade.getMemberCount(), "Expects two rows in the database");
+//    }
 //
 //}
