@@ -4,7 +4,10 @@ import entities.Joke;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -36,7 +39,7 @@ public class JokeFacade {
 
         EntityManager em = getEntityManager();
         try {
-            return em.createNamedQuery("SELECT r?? FROM Joke r")
+            return em.createNamedQuery("SELECT r FROM Joke r")
             .getResultList();
         } finally {
             em.close();
@@ -64,5 +67,6 @@ public class JokeFacade {
         }
 
     }
+
 
 }
