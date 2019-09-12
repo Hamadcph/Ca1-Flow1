@@ -1,5 +1,6 @@
 package rest;
 
+import DTO.GroupMemberDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entities.GroupMember;
@@ -20,25 +21,59 @@ import javax.ws.rs.core.MediaType;
 public class MemberResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-                "pu",
-                "jdbc:mysql://localhost:3307/member",
-                "dev",
-                "ax2",
-                EMF_Creator.Strategy.CREATE);
-    private static final MemberFacade FACADE =  MemberFacade.getMemberFacade(EMF);
+            "pu",
+            "jdbc:mysql://localhost:3307/member",
+            "dev",
+            "ax2",
+            EMF_Creator.Strategy.CREATE);
+    private static final MemberFacade FACADE = MemberFacade.getMemberFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-            
+
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-    
-    
-@Path("/all")
+
+    @Path("/count")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMovieCount() {
+        long count = FACADE.getMemberCount();
+        return "{\"count\":" + count + "}";
+    }
+
+    @Path("/name/")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMovieByName(String name) {
+        try {
+            return GSON.toJson(FACADE.getMemberName(name));
+        } catch (Exception ex) {
+            return "{\"errormessage\":\"Movie does not exist\"}";
+        }
+    }
+
+    @Path("/{id}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getJokeById(@PathParam("id") int id) {
+        return GSON.toJson(new GroupMemberDTO(FACADE.getMemberId(id)));
+    }
+
+    @Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMembers() {
         return GSON.toJson(FACADE.getAllMembers());
     }
+
+    @Path("/populate")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String PopulateMembers() {
+        FACADE.populateMembers();
+        return "{\"msg\":\"Populated\"}";
+    }
+
 }
