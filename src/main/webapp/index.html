@@ -4,18 +4,23 @@
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
-            table, th, td {
+            table {
+                border-collapse: collapse;
+            }
+
+            table, td, th {
                 border: 1px solid black;
             }
         </style>
     </head>
-    <body>
+        <body>
         <h1>Group 2</h1>
         <h2>Class B</h2>
         <br>
         <p>Members (Loaded from Rest API)</p>
-
+        
         <table style="width:100%">
+<<<<<<< Updated upstream
             <tr>
                 <th>Name</th>
                 <th>Student Id</th> 
@@ -55,8 +60,50 @@
                 document.getElementById("color3").style.backgroundColor  = "red";
                 
             }
+=======
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Student ID</th>
+                    <th>color</th>
+                </tr>
+            </thead>
+            <tbody id="tabledata">
+                
+
+            </tbody>
+
+        </table>
+        <button id="Reload">Reload names </button>
+
+        <h3>Links</h3>
+        <a href="WhoAndWhat.html">Who Did What and our Group Contract</a><br>
+        <a href="jokes.html">Cool Jokes</a><br>
+        <a href="https://github.com/Hamadcph/Ca1-Flow1">GitHub Repository</a><br>
+
+
+
+        <script>
+
+            function getMembers() {
+                fetch("https://hamadshah.com/CA-1/api/Member/all")
+                        .then(res => res.json())
+                        .then(data => {
+
+                            let rows = data.map(function (name) {
+                                let row = "<tr> <td>" + name.name + "</td> <td>" + name.StudentId +
+                                        "</td> <td>" + name.color + "</td> </tr>";
+                                return row;
+                            })
+
+                            let r = rows.join("");
+                            document.getElementById("tabledata").innerHTML = r;
+                        })
+            }
+            
+            document.getElementById("Reload").onclick = getMembers();
+
+>>>>>>> Stashed changes
         </script>
-
-
     </body>
 </html>

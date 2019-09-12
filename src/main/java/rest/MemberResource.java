@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import entities.GroupMember;
 import utils.EMF_Creator;
 import facades.MemberFacade;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -42,11 +44,25 @@ public class MemberResource {
         return "{\"count\":" + count + "}";
     }
 
+<<<<<<< Updated upstream
+=======
+    @Path("/name/")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMemberName(String name) {
+        try {
+            return GSON.toJson(FACADE.getMemberName(name));
+        } catch (Exception ex) {
+            return "{\"errormessage\":\"Member does not exist\"}";
+        }
+    }
+
+>>>>>>> Stashed changes
     @Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMembers() {
         return GSON.toJson(FACADE.getAllMembers());
-    }
+        }
 
 }
