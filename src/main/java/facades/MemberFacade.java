@@ -1,10 +1,11 @@
 package facades;
 
-import entities.Member;
+import entities.GroupMember;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -40,29 +41,15 @@ public class MemberFacade {
     public long getMemberCount(){
         EntityManager em = emf.createEntityManager();
         try{
-            long memberCount = (long)em.createQuery("SELECT COUNT(m) FROM Member m").getSingleResult();
+            long memberCount = (long)em.createQuery("SELECT COUNT(m) FROM GroupMember m").getSingleResult();
             return memberCount;
         }finally{  
             em.close();
         }
     }
     
-    public List<Member> getAllMembers(){
+    public List<GroupMember> getAllMembers(){
         EntityManager em = emf.createEntityManager();
-        return em.createNamedQuery("Member.getAll").getResultList();
+        return em.createNamedQuery("GroupMember.getAll").getResultList();
     }
-    
-        public Member getMemberName(String name) throws Exception {
-        EntityManager em = getEntityManager();
-        try {
-            return em.createQuery("SELECT FROM Member m WHERE m.name = :name", Member.class).getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Non found by that name");
-        } finally {
-            em.close();
-        }
-        
-    }
-
 }

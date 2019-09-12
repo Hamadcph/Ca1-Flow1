@@ -73,7 +73,7 @@
 //        member2 = new Member("Jacob", 2, "green");
 //        try {
 //            em.getTransaction().begin();
-//            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+//            em.createNamedQuery("Member.deleteAllRows").executeUpdate();
 //            em.persist(member1);
 //            em.persist(member2);
 //            em.getTransaction().commit();
@@ -82,11 +82,11 @@
 //        }
 //    }
 //
-//    @Test
-//    public void testServerIsUp() {
-//        System.out.println("Testing is server UP");
-//        given().when().get("/Member").then().statusCode(200);
-//    }
+////    @Test
+////    public void testServerIsUp() {
+////        System.out.println("Testing is server UP");
+////        given().when().get("/Member").then().statusCode(200);
+////    }
 //
 //    //This test assumes the database contains two rows
 ////    @Test

@@ -61,7 +61,7 @@
 //        EntityManager em = emf.createEntityManager();
 //        try {
 //            em.getTransaction().begin();
-//            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+//            em.createNamedQuery("Member.deleteAllRows").executeUpdate();
 //            em.persist(member1);
 //            em.persist(member2);
 //            em.getTransaction().commit();
@@ -76,9 +76,9 @@
 //    }
 //
 //    // TODO: Delete or change this method 
-////    @Test
-////    public void testAFacadeMethod() {
-////        assertEquals(2, facade.getMemberCount(), "Expects two rows in the database");
-////    }
+//    @Test
+//    public void testAFacadeMethod() {
+//        assertEquals(2, facade.getMemberCount(), "Expects two rows in the database");
+//    }
 //
 //}
