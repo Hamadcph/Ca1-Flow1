@@ -80,21 +80,13 @@ public class MemberFacade {
         return member;
     }
 
-    public GroupMember getMemberId(long id) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            GroupMember member = em.find(GroupMember.class, id);
-            return member;
-        } finally {
-            em.close();
-        }
-    }
+    
 
     public void populateMembers() {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+            em.createNamedQuery("GroupMember.deleteAllRows").executeUpdate();
             em.persist(new GroupMember("Hamad", 1, "Green"));
             em.persist(new GroupMember("Jabs", 2, "green"));
             em.persist(new GroupMember("Artin", 3, "Yellow"));

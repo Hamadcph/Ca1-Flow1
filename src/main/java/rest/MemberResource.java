@@ -53,13 +53,7 @@ public class MemberResource {
             return "{\"errormessage\":\"Movie does not exist\"}";
         }
     }
-
-    @Path("/{id}")
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public String getJokeById(@PathParam("id") int id) {
-        return GSON.toJson(new GroupMemberDTO(FACADE.getMemberId(id)));
-    }
+    
 
     @Path("/all")
     @GET
