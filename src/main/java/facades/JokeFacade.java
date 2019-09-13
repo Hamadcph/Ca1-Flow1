@@ -19,7 +19,8 @@ public class JokeFacade {
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private JokeFacade() {
+    private JokeFacade()
+    {
     }
 
     /**
@@ -27,37 +28,58 @@ public class JokeFacade {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static JokeFacade getFacadeExample(EntityManagerFactory _emf) {
-        if (instance == null) {
+    public static JokeFacade getFacadeExample(EntityManagerFactory _emf)
+    {
+        if (instance == null)
+        {
             emf = _emf;
             instance = new JokeFacade();
         }
         return instance;
     }
 
-   public List<Joke> getAllJokes() {
+    public List<Joke> getAllJokes()
+    {
 
         EntityManager em = getEntityManager();
-        try {
+        try
+        {
             return em.createNamedQuery("SELECT r FROM Joke r")
-            .getResultList();
-        } finally {
+                    .getResultList();
+        } finally
+        {
             em.close();
         }
     }
 
-   public Joke getJokeById(long id) {
-     
+    public Joke getJokeById(long id)
+    {
+
         return getEntityManager().find(Joke.class, id);
 
     }
 
-    private EntityManager getEntityManager() {
+    private EntityManager getEntityManager()
+    {
         return emf.createEntityManager();
     }
 
-
+    public void populateJokes()
+    {
+        EntityManager em = emf.createEntityManager();
+        try
+        {
+            em.getTransaction().begin();
+            em.createNamedQuery("GroupMember.deleteAllRows").executeUpdate();
+            em.persist(new Joke(1, "Hamad", "Green"));
+            em.persist(new Joke(2, "Jabs", "green"));
+            em.persist(new Joke(3, "Artin", "Yellow"));
+            em.persist(new Joke(4, "Chris", "Yellow"));
+            em.getTransaction().commit();
+        } finally
+        {
+            em.close();
+        }
     }
 
-
-
+}
