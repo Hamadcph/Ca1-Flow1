@@ -30,7 +30,7 @@ public class FacadeMemberTest {
     public FacadeMemberTest() {
     }
 
-    //@BeforeAll
+    @BeforeAll
     public static void setUpClass() {
         emf = EMF_Creator.createEntityManagerFactory(
                 "pu",
