@@ -5,13 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "Joke.deleteAllRows", query = "DELETE from Joke")
+@NamedQueries(
+{
+    @NamedQuery(name = "Joke.deleteAllRows", query = "DELETE from Joke"),
+    @NamedQuery(name = "Joke.getAllJokes", query = "SELECT r FROM Joke r")
+})
+
 public class Joke implements Serializable {
 
-    public Joke(long id, String jokeContent, String jokeType) {
+    public Joke(long id, String jokeContent, String jokeType)
+    {
         this.id = id;
         this.jokeContent = jokeContent;
         this.jokeType = jokeType;
@@ -58,5 +65,4 @@ public class Joke implements Serializable {
         this.id = id;
     }
 
-   
 }
