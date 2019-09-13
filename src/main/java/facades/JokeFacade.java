@@ -70,7 +70,7 @@ public class JokeFacade {
         try
         {
             em.getTransaction().begin();
-            em.createNamedQuery("GroupMember.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
             em.persist(new Joke(1, "Hamad", "Green"));
             em.persist(new Joke(2, "Jabs", "green"));
             em.persist(new Joke(3, "Artin", "Yellow"));
