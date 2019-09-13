@@ -106,4 +106,15 @@ public class JokeMeResourceTest {
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("count", equalTo(2));   
     }
+
+ @Test
+    public void testgetAll() {
+
+        given().
+                when().
+                get("/Joke").
+                then().
+                assertThat().
+                statusCode(200);
+    }
 }
