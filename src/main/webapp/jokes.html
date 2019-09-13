@@ -1,55 +1,53 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>You won't believe these jokes!!11! Number 2 will make you shit your pants!</title>
+        <title>Jokes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <table style="width:100%">
-            <tr>
-                <th>Joke</th>
-                <th>JokeType</th> 
-                <th>ID</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <form>
-            JokeID:
-            <input id="satan" type="text" name="jokeID" value="">
-        </form>
-        <button onclick="fetchTheJoke()">Fetch</button>
-        <script>
-              function fetchTheJoke()
-              {
-                   fetch("https://hamadshah.com/CA-1/api/Joke/")
-              }
-        </script>
+        <div>Get a joke</div>
 
+        Jokes
+
+        <table class="table">
+            <thead>
+                <tr><th>id</th><th>joke</th><th>joketype</th></tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr><th>id</th><th>joke</th><th>joketype</th></tr>
+            </thead>
+            <tbody id="tbody2">
+
+            </tbody>
+        </table>
+        <button id="button">View All Jokes</button>
+       
+        <script> 
+            function getJokes() {
+    fetch("https://hamadshah.com/CA-1/api/joke/all")
+            .then(res => res.json())
+            .then(data => {
+
+                let rows = data.map(function (name) {
+                    let row = "<tr> <td>" + name.joke + "</td> <td>" + name.reference +
+                            "</td> <td>" + name.rating + "</td> </tr>";
+                    return row;
+                })
+
+                let rowsAsString = rows.join("");
+                document.getElementById("tbody").innerHTML = rowsAsString;
+            })
+}
+document.getElementById("button").onclick = getJokes;
+
+
+
+
+        </script>
     </body>
 </html>
