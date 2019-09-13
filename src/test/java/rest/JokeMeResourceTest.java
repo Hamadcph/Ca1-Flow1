@@ -107,7 +107,7 @@ public class JokeMeResourceTest {
         .body("count", equalTo(2));   
     }
 
- @Test
+// @Test
     public void testgetAll() {
 
         given().

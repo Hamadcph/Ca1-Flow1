@@ -18,34 +18,44 @@ import javax.ws.rs.core.Response;
 public class JokeResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
-                "pu",
-                "jdbc:mysql://localhost:3307/Joke",
-                "dev",
-                "ax2",
-                EMF_Creator.Strategy.CREATE);
-    private static final JokeFacade FACADE =  JokeFacade.getFacadeExample(EMF);
+            "pu",
+            "jdbc:mysql://localhost:3307/Joke",
+            "dev",
+            "ax2",
+            EMF_Creator.Strategy.CREATE);
+    private static final JokeFacade FACADE = JokeFacade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-            
+
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public String demo() {
+    @Produces(
+    {
+        MediaType.APPLICATION_JSON
+    })
+    public String demo()
+    {
         return "{\"msg\":\"Hello World\"}";
     }
-    
-    
 
-    @Path("/all")
+    @Path("all")
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public String getAllJokes(){
+    @Produces(
+    {
+        MediaType.APPLICATION_JSON
+    })
+    public String getAllJokes()
+    {
         return GSON.toJson(FACADE.getAllJokes());
     }
-    
-     @GET
-    @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public String update(Joke entities, @PathParam("id") long id) {
+
+    @GET
+    @Path("{id}")
+    @Produces(
+    {
+        MediaType.APPLICATION_JSON
+    })
+    public String update(Joke entities, @PathParam("id") long id)
+    {
         return GSON.toJson(FACADE.getJokeById(id));
     }
- 
+
 }
