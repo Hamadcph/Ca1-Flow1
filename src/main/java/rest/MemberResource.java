@@ -43,10 +43,10 @@ public class MemberResource {
         return "{\"count\":" + count + "}";
     }
 
-    @Path("/name/")
+    @Path("/name/{name}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getMovieByName(String name) {
+    public String getMovieByName(@PathParam("name") String name) {
         try {
             return GSON.toJson(FACADE.getMemberName(name));
         } catch (Exception ex) {
