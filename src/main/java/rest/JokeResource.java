@@ -28,9 +28,9 @@ public class JokeResource {
 
     @GET
     @Produces(
-    {
-        MediaType.APPLICATION_JSON
-    })
+            {
+                MediaType.APPLICATION_JSON
+            })
     public String demo()
     {
         return "{\"msg\":\"Hello World\"}";
@@ -39,9 +39,9 @@ public class JokeResource {
     @Path("all")
     @GET
     @Produces(
-    {
-        MediaType.APPLICATION_JSON
-    })
+            {
+                MediaType.APPLICATION_JSON
+            })
     public String getAllJokes()
     {
         return GSON.toJson(FACADE.getAllJokes());
@@ -50,12 +50,24 @@ public class JokeResource {
     @GET
     @Path("{id}")
     @Produces(
-    {
-        MediaType.APPLICATION_JSON
-    })
+            {
+                MediaType.APPLICATION_JSON
+            })
     public String update(Joke entities, @PathParam("id") long id)
     {
         return GSON.toJson(FACADE.getJokeById(id));
+    }
+
+    @Path("/populate")
+    @GET
+    @Produces(
+    {
+        MediaType.APPLICATION_JSON
+    })
+    public String PopulateMembers()
+    {
+        FACADE.populateJokes();
+        return "{\"msg\":\"Populated\"}";
     }
 
 }
