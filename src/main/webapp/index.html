@@ -40,12 +40,12 @@
         <script>
 
             function getMembers() {
-                fetch("https://hamadshah.com/CA-1/api/Member/all")
+                fetch("https://jabsvip.dk/CA-1/api/Member/all")
                         .then(res => res.json())
                         .then(data => {
 
                             let row = data.map(function (name) {
-                                let rows = "<tr> <td>" + name.StudentId + "</td> <td>" + name.name +
+                                let rows = "<tr> <td>" + name.name + "</td> <td>" + name.StudentId +
                                         "</td> <td>" + name.color + "</td> </tr>";
                                 return rows;
                             })
