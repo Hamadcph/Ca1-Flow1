@@ -74,16 +74,14 @@ public class JokeFacadeTest {
 //        Remove any data after each test was run
     }
 
-    // TODO: Delete or change this method 
-  //  @Test
 
-    
-   // @Test
-    public void testgetAllJokes() {
-        assertEquals(100,"Joke","hej");
-        assertEquals(101,"Joke","hej");
-        assertEquals(102,"Joke","hej");
-        
+     @Test
+    public void testGetByID() {
+        assertEquals("I want to believe", facade.getJokeById(facade.getAllJokes().get(0).getId()));
     }
-   
+
+     @Test
+    public void testGetAllJokes() {
+        assertEquals("yo", facade.getAllJokes().get(0));
+    }
 }
