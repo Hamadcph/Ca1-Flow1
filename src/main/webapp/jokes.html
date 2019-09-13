@@ -5,9 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Get a joke</div>
-
-        Jokes
 
         <table class="table">
             <thead>
@@ -29,13 +26,13 @@
        
         <script> 
             function getJokes() {
-    fetch("https://hamadshah.com/CA-1/api/joke/all")
+    fetch("https://hamadshah.com/CA-1/api/Joke/all")
             .then(res => res.json())
             .then(data => {
 
                 let rows = data.map(function (name) {
-                    let row = "<tr> <td>" + name.joke + "</td> <td>" + name.reference +
-                            "</td> <td>" + name.rating + "</td> </tr>";
+                    let row = "<tr> <td>" + name.id + "</td> <td>" + name.joke +
+                            "</td> <td>" + name.joketype + "</td> </tr>";
                     return row;
                 })
 
