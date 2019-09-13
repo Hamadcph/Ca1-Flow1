@@ -6,7 +6,7 @@
     <class>entities.GroupMember</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/member"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://167.71.71.91:3306/member"/>
       <property name="javax.persistence.jdbc.user" value="jabs"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="nemkode"/>
