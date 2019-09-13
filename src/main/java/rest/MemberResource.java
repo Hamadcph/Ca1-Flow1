@@ -22,9 +22,9 @@ public class MemberResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
             "pu",
-            "jdbc:mysql://167.71.71.91:3306/member",
-            "jabs",
-            "nemkode",
+            "jdbc:mysql://localhost:3307/member",
+            "dev",
+            "ax2",
             EMF_Creator.Strategy.CREATE);
     private static final MemberFacade FACADE = MemberFacade.getMemberFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();

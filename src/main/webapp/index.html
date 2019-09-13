@@ -40,21 +40,20 @@
         <script>
 
             function getMembers() {
-                fetch("https://jabsvip.dk/CA-1/api/Member/all")
+                fetch("http://localhost:8080/CA-1/api/Member/all")
                         .then(res => res.json())
                         .then(data => {
 
-                            let row = data.map(function (name) {
-                                let rows = "<tr> <td>" + name.name + "</td> <td>" + name.StudentId +
+                            let rows = data.map(function (name) {
+                                let row = "<tr> <td>" + name.name + "</td> <td>" + name.StudentId +
                                         "</td> <td>" + name.color + "</td> </tr>";
-                                return rows;
+                                return row;
                             })
 
-                            let r = rows.join("");
-                            document.getElementById("tabledata").innerHTML = r;
+                            let rowsAsString = rows.join("");
+                            document.getElementById("tabledata").innerHTML = rowsAsString;
                         })
             }
-
             document.getElementById("Reload").onclick = getMembers();
 
         </script>
