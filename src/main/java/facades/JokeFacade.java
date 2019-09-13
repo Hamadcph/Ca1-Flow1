@@ -81,5 +81,20 @@ public class JokeFacade {
             em.close();
         }
     }
+    
+    public Joke addJoke(Joke newJoke) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(newJoke);
+            em.getTransaction().commit();
+            return newJoke;
+        } catch (IllegalArgumentException e) {
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return null;
+    }
 
 }
