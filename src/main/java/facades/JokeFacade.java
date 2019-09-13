@@ -40,16 +40,8 @@ public class JokeFacade {
 
     public List<Joke> getAllJokes()
     {
-
-        EntityManager em = getEntityManager();
-        try
-        {
-            return em.createNamedQuery("SELECT r FROM Joke r")
-                    .getResultList();
-        } finally
-        {
-            em.close();
-        }
+        EntityManager em = emf.createEntityManager();
+        return em.createNamedQuery("Joke.getAllJokes").getResultList();
     }
 
     public Joke getJokeById(long id)
@@ -81,17 +73,21 @@ public class JokeFacade {
             em.close();
         }
     }
-    
-    public Joke addJoke(Joke newJoke) {
+
+    public Joke addJoke(Joke newJoke)
+    {
         EntityManager em = getEntityManager();
-        try {
+        try
+        {
             em.getTransaction().begin();
             em.persist(newJoke);
             em.getTransaction().commit();
             return newJoke;
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e)
+        {
             em.getTransaction().rollback();
-        } finally {
+        } finally
+        {
             em.close();
         }
         return null;
