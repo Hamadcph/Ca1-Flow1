@@ -40,7 +40,7 @@
         <script>
 
             function getMembers() {
-                fetch("http://localhost:8080/CA-1/api/Member/all")
+                fetch("https://jabsvip.dk/CA-1-1.0.1/api/Member/all")
                         .then(res => res.json())
                         .then(data => {
 
@@ -54,7 +54,7 @@
                             document.getElementById("tabledata").innerHTML = rowsAsString;
                         })
             }
-            document.getElementById("Reload").onclick = getMembers();
+            document.getElementById("Reload").onclick = getMembers;
 
         </script>
 
